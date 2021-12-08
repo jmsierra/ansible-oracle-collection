@@ -6,9 +6,5 @@ This ansible collection and its roles tries to ease Oracle database-related prod
 ## Requirements
 None
 
-## Role jmsierra.oracle.instantclient
-It install Oracle Instant Client from zip files from: https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html
-
-Variable | Mandatory | Default | Comment
--------- | --------- | ------- | -------
-oracle_instantclient_version | NO | 21.4 | Oracle Instant Client version to be installed.
+## Roles
+- [jmsierra.oracle.instantclient](roles/instantclient/README.md)

@@ -1,5 +1,5 @@
 oracle_instantclient_os_task: setup_redhat.yml
-oracle_instantclient_packages: 
+oracle_instantclient_packages:
   - unzip
   - glibc
   - libaio

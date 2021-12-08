@@ -13,7 +13,7 @@
     files:
       - "vars/os_{{ ansible_distribution }}.yml"
       - "vars/os_{{ ansible_os_family }}.yml"
-    
+
 - name: Load OS-specific tasks if needed
   ansible.builtin.include_tasks: "{{ oracle_instantclient_os_task }}"
   when: oracle_instantclient_os_task is defined
@@ -32,7 +32,7 @@
   ansible.builtin.get_url:
     url: "{{ item }}"
     dest: "{{ oracle_instantclient_tmpdir }}"
-  loop: 
+  loop:
     - "{{ oracle_instantclient_basic_url }}"
     - "{{ oracle_instantclient_sqlplus_url }}"
 
@@ -42,7 +42,7 @@
     remote_src: true
     dest: "{{ oracle_instantclient_instdir }}"
     mode: 0755
-  loop: 
+  loop:
     - "{{ oracle_instantclient_tmpdir }}/{{ oracle_instantclient_basic_url | basename }}"
     - "{{ oracle_instantclient_tmpdir }}/{{ oracle_instantclient_sqlplus_url | basename }}"
 
