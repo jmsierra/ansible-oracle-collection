@@ -1,0 +1,7 @@
+oracle_instantclient_version: "21.4"
+
+oracle_instantclient_basic_url: "https://download.oracle.com/otn_software/linux/instantclient/{{ oracle_instantclient_version | regex_replace('\\.', '') }}.0.0.0/instantclient-basic-linux.x64-{{ oracle_instantclient_version }}.0.0.0dbru.zip"
+oracle_instantclient_sqlplus_url: "https://download.oracle.com/otn_software/linux/instantclient/{{ oracle_instantclient_version | regex_replace('\\.', '') }}.0.0.0/instantclient-sqlplus-linux.x64-{{ oracle_instantclient_version }}.0.0.0dbru.zip"
+
+oracle_instantclient_tmpdir: /tmp/oracle
+oracle_instantclient_instdir: /usr/local/lib/oracle

@@ -1,0 +1,71 @@
+- name: Debug info
+  ansible.builtin.debug:
+    msg:
+      - "oracle_instantclient_version = {{ oracle_instantclient_version }}"
+      - "oracle_instantclient_instdir = {{ oracle_instantclient_instdir }}"
+      - "oracle_instantclient_home = {{ oracle_instantclient_home }}"
+    verbosity: 1
+
+# OS-Specific
+- name: Load OS-specific vars
+  ansible.builtin.include_vars: "{{ lookup('first_found', files) }}"
+  vars:
+    files:
+      - "vars/os_{{ ansible_distribution }}.yml"
+      - "vars/os_{{ ansible_os_family }}.yml"
+    
+- name: Load OS-specific tasks if needed
+  ansible.builtin.include_tasks: "{{ oracle_instantclient_os_task }}"
+  when: oracle_instantclient_os_task is defined
+
+# Instant Client deployment
+- name: Make sure needed dirs exists
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0755
+  loop:
+    - "{{ oracle_instantclient_tmpdir }}"
+    - "{{ oracle_instantclient_instdir }}"
+
+- name: Download zip packages
+  ansible.builtin.get_url:
+    url: "{{ item }}"
+    dest: "{{ oracle_instantclient_tmpdir }}"
+  loop: 
+    - "{{ oracle_instantclient_basic_url }}"
+    - "{{ oracle_instantclient_sqlplus_url }}"
+
+- name: Deploy packages
+  ansible.builtin.unarchive:
+    src: "{{ item }}"
+    remote_src: true
+    dest: "{{ oracle_instantclient_instdir }}"
+    mode: 0755
+  loop: 
+    - "{{ oracle_instantclient_tmpdir }}/{{ oracle_instantclient_basic_url | basename }}"
+    - "{{ oracle_instantclient_tmpdir }}/{{ oracle_instantclient_sqlplus_url | basename }}"
+
+- name: Add ORACLE_HOME to LD_LIBRARY_PATH
+  ansible.builtin.template:
+    src: "templates/oracle-instantclient.conf.j2"
+    dest: "/etc/ld.so.conf.d/oracle-instantclient.conf"
+    mode: 0644
+  notify:
+    - Run ldconfig
+
+- name: Add soft links to binaries
+  ansible.builtin.file:
+    path: "/usr/local/bin/{{ item }}"
+    state: link
+    src: "{{ oracle_instantclient_home }}/{{ item }}"
+  loop:
+    - sqlplus
+    - adrci
+    - genezi
+
+- name: Set facts
+  ansible.builtin.set_fact:
+    oracle_instantclient:
+      version: "{{ oracle_instantclient_version }}"
+      home: "{{ oracle_instantclient_home }}"

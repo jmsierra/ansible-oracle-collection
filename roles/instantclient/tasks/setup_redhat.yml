@@ -1,0 +1,4 @@
+- name: Install needed packages
+  ansible.builtin.yum:
+    name: "{{ oracle_instantclient_packages }}"
+    state: present

@@ -1,0 +1,1 @@
+oracle_instantclient_home: "{{ oracle_instantclient_instdir }}/instantclient_{{ oracle_instantclient_version | regex_replace('\\.', '_') }}"

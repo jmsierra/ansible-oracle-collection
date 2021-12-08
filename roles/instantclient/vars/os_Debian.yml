@@ -1,0 +1,5 @@
+oracle_instantclient_os_task: setup_debian.yml
+oracle_instantclient_packages: 
+  - unzip
+  - libc6
+  - libaio1

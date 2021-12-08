@@ -1,0 +1,43 @@
+- name: Deploy testing environments
+  hosts: localhost
+  vars:
+    containers:
+      - name: ubuntu2004
+        image: ubuntu2004
+        build:
+          path: ./docker/ubuntu2004
+      - name: debian10
+        image: debian10
+        build:
+          path: ./docker/debian10
+      - name: centos7
+        image: centos:7
+      - name: centos8
+        image: centos:8
+  tasks:
+    - name: Build needed docker images
+      community.docker.docker_image:
+        build: "{{ item.build }}"
+        source: build
+        name: "{{ item.image }}"
+      loop: "{{ containers }}"
+      when: item.build is defined
+
+    - name: Deploy Testing docker containers
+      community.docker.docker_container:
+        name: "{{ item.name }}"
+        image: "{{ item.image }}"
+        memory: 2G
+        memory_swap: 2G
+        command: sleep 3600
+      loop: "{{ containers }}"
+
+    - name: Add hosts
+      ansible.builtin.add_host:
+        name: "{{ item.name }}"
+      loop: "{{ containers }}"
+
+- name: Install oracle-instantclient
+  hosts: all
+  roles:
+    - role: jmsierra.oracle.instantclient
