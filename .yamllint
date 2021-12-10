@@ -15,8 +15,8 @@ rules:
   commas:
     max-spaces-after: -1
     level: error
-  comments: disable
-  comments-indentation: disable
+  comments: enable
+  comments-indentation: enable
   document-start: disable
   empty-lines:
     max: 3
