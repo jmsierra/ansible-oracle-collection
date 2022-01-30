@@ -25,7 +25,7 @@ jobs:
           - { "distro":"centos:7", "command":"/usr/sbin/init" }
           - { "distro":"centos:8", "command":"/usr/sbin/init" }
           - { "distro":"ubuntu:20.04", "command":"/usr/bin/cat" }
-          - { "distro":"debian:10", "command":"/lib/systemd/systemd" }
+          - { "distro":"debian:10", "command":"/usr/bin/cat" }
         collection_role:
           - instantclient
     steps:
