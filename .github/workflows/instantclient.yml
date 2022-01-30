@@ -24,7 +24,7 @@ jobs:
         molecule_distro:
           - { "distro":"centos:7", "command":"/usr/sbin/init" }
           - { "distro":"centos:8", "command":"/usr/sbin/init" }
-          - { "distro":"ubuntu:20.04", "command":"sleep 3600" }
+          - { "distro":"ubuntu:20.04", "command":"/usr/bin/cat" }
           - { "distro":"debian:10", "command":"/lib/systemd/systemd" }
         collection_role:
           - instantclient
@@ -55,4 +55,4 @@ jobs:
           ansible --version &&
           MOLECULE_COMMAND=${{ matrix.molecule_distro.command }}
           MOLECULE_DISTRO=${{ matrix.molecule_distro.distro }}
-          molecule --debug test -s ${{ matrix.collection_role }}
+          molecule test -s ${{ matrix.collection_role }}
