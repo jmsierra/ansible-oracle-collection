@@ -12,8 +12,6 @@ platforms:
     image: ${MOLECULE_DISTRO:-ubuntu-xenial}
     privileged: true
     command: ${MOLECULE_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
 provisioner:
   name: ansible
   playbooks:
