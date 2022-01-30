@@ -43,6 +43,7 @@ jobs:
           curl -fsSL https://get.docker.com -o get-docker.sh
           sudo sh get-docker.sh
           python -m pip install --upgrade pip
+          pip install ansible-core ansible
           pip install yamllint ansible-lint requests docker
           pip install "molecule[docker]"
       - name: Install the collection
