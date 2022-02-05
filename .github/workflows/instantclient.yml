@@ -46,6 +46,12 @@ jobs:
           pip install ansible-core ansible
           pip install yamllint ansible-lint requests docker
           pip install "molecule[docker]"
+
+      - name: Setup ansible
+        run: |
+          mkdir -p ~/.ansible/tmp
+          chmod -R ug+rwx ~/.ansible/tmp
+
       - name: Install the collection
         run: ansible-galaxy collection install . --force
 
