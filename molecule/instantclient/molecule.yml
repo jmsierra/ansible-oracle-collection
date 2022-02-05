@@ -10,7 +10,6 @@ lint: |
 platforms:
   - name: instance
     image: ${MOLECULE_DISTRO:-ubuntu-xenial}
-    privileged: true
     command: ${MOLECULE_COMMAND:-""}
 provisioner:
   name: ansible
