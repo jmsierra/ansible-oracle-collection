@@ -22,8 +22,8 @@ jobs:
       fail-fast: true
       matrix:
         molecule_distro:
-          - { "distro":"centos:7", "command":"/usr/sbin/init" }
-          - { "distro":"centos:8", "command":"/usr/sbin/init" }
+          - { "distro":"centos:7", "command":"/sbin/init" }
+          - { "distro":"centos:8", "command":"/sbin/init" }
         collection_role:
           - instantclient
     steps:
