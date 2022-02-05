@@ -11,6 +11,7 @@ platforms:
   - name: instance
     image: ${MOLECULE_DISTRO:-ubuntu-xenial}
     command: ${MOLECULE_COMMAND:-""}
+    
 provisioner:
   name: ansible
   playbooks:

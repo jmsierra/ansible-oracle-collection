@@ -1,8 +1,6 @@
 ---
 - name: Converge
   hosts: all
-  vars:
-    ansible_remote_tmp: /tmp
   pre_tasks:
     - name: Wait for systemd to complete initialization.  # noqa 303
       command: systemctl is-system-running
