@@ -50,9 +50,8 @@ jobs:
 
       - name: Run role tests
         run: >-
-          molecule --version
-          ansible --version
-          pip list | grep -E 'ansible|molecule'
+          molecule --version &&
+          ansible --version &&
           MOLECULE_COMMAND=${{ matrix.molecule_distro.command }}
           MOLECULE_DISTRO=${{ matrix.molecule_distro.distro }}
           molecule --debug test -s ${{ matrix.collection_role }}
