@@ -23,7 +23,7 @@ jobs:
       matrix:
         molecule_distro:
           - { "distro":"centos:7", "command":"/sbin/init" }
-          - { "distro":"centos:8", "command":"/sbin/init" }
+          - { "distro":"tgagor/centos:stream8", "command":"/sbin/init" }
         collection_role:
           - instantclient
     steps:
@@ -31,7 +31,7 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Set up Python 3.8
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v2
         with:
           python-version: 3.8
 

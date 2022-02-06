@@ -4,6 +4,11 @@
 - name: Verify
   hosts: all
   tasks:
-  - name: Example assertion
-    assert:
-      that: true
+    - name: Example assertion
+      ansible.builtin.command: sqlplus -V
+      register: result
+      changed_when: false
+
+    - name: Show version
+      ansible.builtin.debug:
+        msg: "{{ result.stdout_lines[2] }}"
