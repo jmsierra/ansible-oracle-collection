@@ -1,0 +1,14 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  tasks:
+    - name: Gather SQLPlus version
+      ansible.builtin.command: sqlplus -V
+      register: result
+      changed_when: false
+
+    - name: Show version
+      ansible.builtin.debug:
+        msg: "{{ result.stdout_lines[2] }}"
