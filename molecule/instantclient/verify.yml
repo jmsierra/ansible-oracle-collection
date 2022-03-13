@@ -4,7 +4,7 @@
 - name: Verify
   hosts: all
   tasks:
-    - name: Example assertion
+    - name: Gather SQLPlus version
       ansible.builtin.command: sqlplus -V
       register: result
       changed_when: false

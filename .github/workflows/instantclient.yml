@@ -30,7 +30,7 @@ jobs:
           - centos7
           - centos8
           - debian10
-          # - ubuntu2004
+          - ubuntu2004
         collection_role:
           - instantclient
     steps:
