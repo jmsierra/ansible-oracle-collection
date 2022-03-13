@@ -12,6 +12,11 @@ on:
       - 'molecule/instantclient/**'
       - '.github/workflows/instantclient.yml'
       - 'molecule/common/**'
+
+defaults:
+  run:
+    working-directory: 'jmsierra.oracle.instantclient'
+
 jobs:
   molecule:
     runs-on: ubuntu-latest
@@ -21,37 +26,33 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        molecule_distro:
-          - { "distro":"centos:7", "command":"/sbin/init" }
-          - { "distro":"tgagor/centos:stream8", "command":"/sbin/init" }
+        distro:
+          - centos7
+          - centos8
+          - debian10
+          # - ubuntu2004
         collection_role:
           - instantclient
     steps:
       - name: Check out code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+        with:
+          path: 'jmsierra.oracle.instantclient'
 
-      - name: Set up Python 3.8
+      - name: Set up Python 3.
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: "3.x"
 
-      - name: Install dependencies
-        run: |
-          sudo apt install apt-transport-https ca-certificates curl software-properties-common
-          curl -fsSL https://get.docker.com -o get-docker.sh
-          sudo sh get-docker.sh
-          python -m pip install --upgrade pip
-          pip install ansible-core ansible
-          pip install yamllint ansible-lint requests docker
-          pip install "molecule[docker]"
+      - name: Install test dependencies.
+        run: pip3 install ansible molecule[docker] docker yamllint ansible-lint
 
       - name: Install the collection
         run: ansible-galaxy collection install . --force
 
       - name: Run role tests
-        run: >-
-          molecule --version &&
-          ansible --version &&
-          MOLECULE_COMMAND=${{ matrix.molecule_distro.command }}
-          MOLECULE_DISTRO=${{ matrix.molecule_distro.distro }}
-          molecule --debug test -s ${{ matrix.collection_role }}
+        run: molecule test -s ${{ matrix.collection_role }}
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
+          MOLECULE_DISTRO: ${{ matrix.distro }}
