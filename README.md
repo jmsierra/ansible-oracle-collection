@@ -7,4 +7,6 @@ This ansible collection and its roles tries to ease Oracle database-related prod
 None
 
 ## Roles
-- [jmsierra.oracle.instantclient](https://github.com/jmsierra/ansible-oracle-collection/blob/main/roles/instantclient/README.md)
+| Role | Build Status | Documentation |
+| ---- | ------------ | ------------- | 
+| jmsierra.oracle.instantclient | [![jmsierra.oracle.instantclient](https://github.com/jmsierra/ansible-oracle-collection/actions/workflows/instantclient.yml/badge.svg?branch=develop)](https://github.com/jmsierra/ansible-oracle-collection/actions/workflows/instantclient.yml) | [Documentation](https://github.com/jmsierra/ansible-oracle-collection/blob/main/roles/instantclient/README.md) |
