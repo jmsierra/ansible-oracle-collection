@@ -27,5 +27,8 @@ jobs:
       - name: Install Ansible.
         run: pip3 install ansible-base
 
+      - name: Build collection tar
+        run: ansible-galaxy collection build --force .
+
       - name: Trigger a new import on Galaxy.
-        run: ansible-galaxy collection publish --token ${{ secrets.ANSIBLE_GALAXY_API_KEY }} .
+        run: ansible-galaxy collection publish --token ${{ secrets.ANSIBLE_GALAXY_API_KEY }} `ls jmsierra-oracle-*.tar.gz`
