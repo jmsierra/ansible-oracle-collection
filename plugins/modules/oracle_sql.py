@@ -5,6 +5,7 @@ module: jmsierra.oracle.oracle_sql
 short_description: Execute arbitrary sql
 description:
     - Execute arbitrary sql against an Oracle database
+version_added: "0.2.0
 options:
     username:
         description:
@@ -18,12 +19,12 @@ options:
         required: false
         default: None
         aliases: ['pass']
-    service_name:
-        description:
-            - The service_name to connect to the database
-        required: false
-        default: database_name
-        aliases: ['sn']
+    mode:
+		description:
+			- The mode with which to connect to the database
+		required: false
+		default: normal
+		choices: ['normal','sysdba', 'sysasm']
     hostname:
         description:
             - The host of the database
@@ -35,6 +36,16 @@ options:
             - The listener port to connect to the database
         required: false
         default: 1521
+    service_name:
+        description:
+            - The service_name to connect to the database
+        required: false
+        default: database_name
+        aliases: ['sn']
+    connection_string:
+        description:
+            - The connection string used to connect to the database
+        required: false
     sql:
         description:
             - The sql you want to execute
