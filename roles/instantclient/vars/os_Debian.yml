@@ -3,3 +3,4 @@ oracle_instantclient_packages:
   - unzip
   - libc6
   - libaio1
+  - python3-pip

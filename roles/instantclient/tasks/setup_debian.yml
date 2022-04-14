@@ -2,3 +2,4 @@
   ansible.builtin.apt:
     name: "{{ oracle_instantclient_packages }}"
     state: present
+    update_cache: true
