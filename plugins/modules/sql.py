@@ -1,7 +1,7 @@
 #!/usr/bin/python
 DOCUMENTATION = '''
 ---
-module: jmsierra.oracle.oracle_sql
+module: jmsierra.oracle.sql
 short_description: Execute arbitrary sql
 description:
     - Execute arbitrary sql against an Oracle database
@@ -58,7 +58,9 @@ notes:
     - cx_Oracle needs to be installed
     - Oracle client libraries need to be installed along with ORACLE_HOME and LD_LIBRARY_PATH settings.
 requirements: [ "cx_Oracle" ]
-author: Mikael Sandström, oravirt@gmail.com, @oravirt
+author: 
+    - Mikael Sandström, oravirt@gmail.com, @oravirt
+    - https://github.com/jmsierra
 '''
 
 from logging import exception
