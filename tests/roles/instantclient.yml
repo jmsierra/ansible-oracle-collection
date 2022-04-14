@@ -3,17 +3,13 @@
   vars:
     containers:
       - name: ubuntu2004
-        image: ubuntu2004
-        build:
-          path: ./docker/ubuntu2004
+        image: geerlingguy/docker-ubuntu2004-ansible:latest
       - name: debian10
-        image: debian10
-        build:
-          path: ./docker/debian10
+        image: geerlingguy/docker-debian10-ansible:latest
       - name: centos7
-        image: centos:7
+        image: geerlingguy/docker-centos7-ansible:latest
       - name: centos8
-        image: centos:8
+        image: geerlingguy/docker-centos8-ansible:latest
   tasks:
     - name: Build needed docker images
       community.docker.docker_image:

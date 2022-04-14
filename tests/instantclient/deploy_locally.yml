@@ -1,4 +1,0 @@
-- name: Deploy instantclient locally
-  hosts: localhost
-  roles:
-    - role: jmsierra.oracle.instantclient
