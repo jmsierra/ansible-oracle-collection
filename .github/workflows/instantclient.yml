@@ -6,12 +6,14 @@ on:
       - 'molecule/instantclient/**'
       - '.github/workflows/instantclient.yml'
       - 'molecule/common/**'
+      - 'requirements.txt'
   pull_request:
     paths:
       - 'roles/instantclient/**'
       - 'molecule/instantclient/**'
       - '.github/workflows/instantclient.yml'
       - 'molecule/common/**'
+      - 'requirements.txt'
 
 defaults:
   run:
