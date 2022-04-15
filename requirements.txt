@@ -6,3 +6,4 @@ ansible-test==1.0.1
 molecule[docker]==3.5.2
 docker
 yamllint
+rich>=10,<11.0.0
