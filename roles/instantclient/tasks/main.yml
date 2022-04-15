@@ -31,7 +31,7 @@
 - name: Download zip packages
   ansible.builtin.get_url:
     url: "{{ item }}"
-    dest: "{{ oracle_instantclient_tmpdir }}"
+    dest: "{{ oracle_instantclient_tmpdir }}/{{ item | basename }}"
   loop:
     - "{{ oracle_instantclient_basic_url }}"
     - "{{ oracle_instantclient_sqlplus_url }}"
@@ -63,6 +63,15 @@
     - sqlplus
     - adrci
     - genezi
+
+- name: Install python3 libraries needed for modules
+  ansible.builtin.pip:
+    name:
+      - cx_Oracle
+    state: present
+    executable: pip3
+  environment:
+    PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
 
 - name: Set facts
   ansible.builtin.set_fact:
