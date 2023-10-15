@@ -11,7 +11,7 @@ None
 ## Roles
 | Role | Build Status | Documentation |
 | ---- | ------------ | ------------- | 
-| jmsierra.oracle.instantclient | [![jmsierra.oracle.instantclient](https://github.com/jmsierra/ansible-oracle-collection/actions/workflows/instantclient.yml/badge.svg?branch=develop)](https://github.com/jmsierra/ansible-oracle-collection/actions/workflows/instantclient.yml) | [Documentation](https://github.com/jmsierra/ansible-oracle-collection/blob/main/roles/instantclient/README.md) |
+| jmsierra.oracle.instantclient | [![jmsierra.oracle.instantclient](https://github.com/jmsierra/ansible-oracle-collection/actions/workflows/instantclient.yml/badge.svg)](https://github.com/jmsierra/ansible-oracle-collection/actions/workflows/instantclient.yml) | [Documentation](https://github.com/jmsierra/ansible-oracle-collection/blob/main/roles/instantclient/README.md) |
 
 ## Modules
 | Module | Description |
