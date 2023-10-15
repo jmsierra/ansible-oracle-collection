@@ -1,0 +1,12 @@
+driver:
+  name: docker
+dependency:
+  name: galaxy
+  options:
+    requirements-file: requirements.yml
+platforms:
+  - name: instance
+    image: geerlingguy/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest
+    pre_build_image: true
+
+
