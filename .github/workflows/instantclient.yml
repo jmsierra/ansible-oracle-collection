@@ -42,9 +42,9 @@ jobs:
           path: 'jmsierra.oracle.instantclient'
 
       - name: Set up Python 3.
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.x"
+          python-version: "3.9"
 
       - name: Install Python dependencies.
         run: pip3 install -r requirements.txt
