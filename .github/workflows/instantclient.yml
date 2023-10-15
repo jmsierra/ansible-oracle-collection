@@ -54,7 +54,7 @@ jobs:
 
       - name: Run role tests
         run: molecule test -s ${{ matrix.collection_role }}
-        working-directory: ./extensions
+        working-directory: jmsierra.oracle.instantclient/extensions
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
