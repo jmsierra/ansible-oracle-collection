@@ -6,7 +6,7 @@ galaxy_info:
   license: "MIT License"
   role_name: instantclient
   description: Oracle InstantClient+SQLPLUS for Linux
-  min_ansible_version: "2.10"
+  min_ansible_version: "2.13.9"
   platforms:
     - name: EL
       versions:

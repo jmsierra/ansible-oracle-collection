@@ -1,11 +1,8 @@
-ansible==5.2.0
-ansible-compat==0.5.0
-ansible-core==2.12.1
-ansible-lint==5.3.1
-ansible-test==1.0.1
-molecule[docker]==3.5.2
-yamllint==1.26.3
-rich==10.13.0
-enrich==1.2.6
+ansible==8.5.0
+ansible-compat==4.1.10
+ansible-core==2.15.5
+ansible-lint==6.20.3
+molecule[docker]==6.0.2
+yamllint==1.32.0
 docker
 
